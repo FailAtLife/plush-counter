@@ -91,26 +91,26 @@ app.get('/plushcount', (req, res) => {
   const count = getCount();
 
   const countMessages = [
-    `This fucking streamer has ${count} goddamn plushies.`,
-    `Why the fuck do you want to know? She has ${count}, you nosy bastard.`,
-    `${count} plushies. That's an absurd amount of stuffed shit.`,
-    `${count} plushies and somehow she still wants more. Fucking unbelievable.`,
-    `There are ${count} plushies. At this point it's a plush-based economy.`,
-    `${count} plushies. Somebody stage a fucking intervention.`,
-    `Yep, it's ${count}. Stop asking and go do something productive.`,
-    `${count} plushies. The collection has officially gone off the fucking rails.`,
-    `The answer is ${count}. Happy now, you curious little gremlin?`,
-    `${count} plushies. Frankly, it's getting ridiculous.`,
-    `A staggering ${count} plushies currently inhabit this streamer's lair.`,
-    `${count} plushies. One day they'll achieve sentience and unionise.`,
-    `There are ${count} plushies. No, I don't know where she puts them all.`,
-    `${count} plushies. That's a metric fuckton of fluff.`,
-    `${count} plushies and counting. God help us all.`,
-    `Current plush count: ${count}. Touch some grass and stop checking every five minutes.`,
-    `${count} plushies. The addiction is real.`,
-    `It's ${count}, you absolute menace.`,
-    `${count} plushies. The pile grows ever larger and more terrifying.`,
-    `Oh for fuck's sake, it's ${count} plushies.`
+    'This fucking streamer has ' + count + ' goddamn plushies.',
+    'Why the fuck do you want to know? She has ' + count + ', you nosy bastard.',
+    count + ' plushies. That\'s an absurd amount of stuffed shit.',
+    count + ' plushies and somehow she still wants more. Fucking unbelievable.',
+    'There are ' + count + ' plushies. At this point it\'s a plush-based economy.',
+    count + ' plushies. Somebody stage a fucking intervention.',
+    'Yep, it\'s ' + count + '. Stop asking and go do something productive.',
+    count + ' plushies. The collection has officially gone off the fucking rails.',
+    'The answer is ' + count + '. Happy now, you curious little gremlin?',
+    count + ' plushies. Frankly, it\'s getting ridiculous.',
+    'A staggering ' + count + ' plushies currently inhabit this streamer\'s lair.',
+    count + ' plushies. One day they\'ll achieve sentience and unionise.',
+    'There are ' + count + ' plushies. No, I don\'t know where she puts them all.',
+    count + ' plushies. That\'s a metric fuckton of fluff.',
+    count + ' plushies and counting. God help us all.',
+    'Current plush count: ' + count + '. Touch some grass and stop checking every five minutes.',
+    count + ' plushies. The addiction is real.',
+    'It\'s ' + count + ', you absolute menace.',
+    count + ' plushies. The pile grows ever larger and more terrifying.',
+    'Oh for fuck\'s sake, it\'s ' + count + ' plushies.'
   ];
 
   const message =
