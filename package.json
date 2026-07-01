@@ -1,0 +1,12 @@
+{
+  "name": "plush-counter",
+  "version": "1.0.0",
+  "description": "Nightbot plush counter",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
