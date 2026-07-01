@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
   res.send('Plush counter is running! Use /plush or /plushcount');
 });
 
-```js
 const plushMessages = [
   'Another fucking plush?! Are you taking the piss? Total: {count}, you absolute cunt!',
   'We bought another fluffy little bastard because apparently financial stability can get fucked. Count: {count}!',
@@ -76,7 +75,7 @@ const plushMessages = [
   'We\'ve hit {count} plushies. The credit card is screaming and honestly, fair enough.',
   '{count} plushies. That\'s not a collection anymore, that\'s a fucking infestation.'
 ];
-```
+
 
 
 app.get('/plush', (req, res) => {
