@@ -1,10 +1,9 @@
-
+```js
 const express = require('express');
 const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 const FILE = './count.json';
 
 function getCount() {
@@ -28,7 +27,7 @@ const plushMessages = [
   'We bought another fluffy little bastard because apparently financial stability can get fucked. Count: {count}!',
   'The pile gets bigger and our sanity gets smaller. Plushies owned: {count}, you mad fucks!',
   'One more for the army of cuddly dickheads! Current count: {count}!',
-  'At this point the plushies have rights and we fucking don’t. Count: {count}!',
+  'At this point the plushies have rights and we fucking don\'t. Count: {count}!',
   'The collection expands once again because we\'re apparently addicted to buying stuffed shite. Total plushies: {count}!',
   'Nobody needs this many plushies, you deranged little goblin. Now at {count}!',
   'Yet another plush has joined the cult. Count: {count}. We\'re fucked.',
@@ -75,8 +74,6 @@ const plushMessages = [
   'We\'ve hit {count} plushies. The credit card is screaming and honestly, fair enough.',
   '{count} plushies. That\'s not a collection anymore, that\'s a fucking infestation.'
 ];
-
-
 
 app.get('/plush', (req, res) => {
   let count = getCount();
