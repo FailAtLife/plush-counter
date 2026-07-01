@@ -1,3 +1,4 @@
+```js
 const express = require('express');
 const fs = require('fs');
 
@@ -18,7 +19,11 @@ function setCount(count) {
   fs.writeFileSync(FILE, JSON.stringify({ count }));
 }
 
-const messages = [
+app.get('/', (req, res) => {
+  res.send('Plush counter is running! Use /plush or /plushcount');
+});
+
+const plushMessages = [
 'Another fucking plush?! Are you taking the piss? Total: {count}, you absolute cunt!',
 'We bought another fluffy little bastard because apparently financial stability can get fucked. Count: {count}!',
 'The pile gets bigger and our sanity gets smaller. Plushies owned: {count}, you mad fucks!',
@@ -72,6 +77,18 @@ const messages = [
 
 ];
 
+app.get('/plush', (req, res) => {
+  let count = getCount();
+  count++;
+  setCount(count);
+
+  const message =
+    plushMessages[Math.floor(Math.random() * plushMessages.length)]
+      .replace('{count}', count);
+
+  res.send(message);
+});
+
 app.get('/plushcount', (req, res) => {
   const count = getCount();
 
@@ -103,6 +120,8 @@ app.get('/plushcount', (req, res) => {
 
   res.send(message);
 });
+
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
 });
+```
