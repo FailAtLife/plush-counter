@@ -25,7 +25,6 @@ const messages = [
 'One more for the cuddly army of idiots! Current count: {count}!',
 'At this point, this is a plush infestation, you daft cunt. Count: {count}!',
 'The collection expands once again because we're all fucking enablers. Total plushies: {count}!',
-'Nobody needs this many plushies, you absolute wanker... now at {count}!',
 'Yet another plush has been dragged into this madness. Count: {count}!',
 'The plush empire now consists of {count} fluffy little fuckers!',
 'Resistance is fucking futile. Plush total: {count}!',
