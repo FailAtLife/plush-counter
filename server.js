@@ -1,22 +1,12 @@
 
 const express = require('express');
-const fs = require('fs');
+const { Redis } = require('@upstash/redis');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const FILE = './count.json';
 
-function getCount() {
-  if (!fs.existsSync(FILE)) {
-    fs.writeFileSync(FILE, JSON.stringify({ count: 87 }));
-  }
+const redis = Redis.fromEnv();
 
-  return JSON.parse(fs.readFileSync(FILE)).count;
-}
-
-function setCount(count) {
-  fs.writeFileSync(FILE, JSON.stringify({ count: count }));
-}
 
 app.get('/', function (req, res) {
   res.send('Plush counter is running! Use /plush or /plushcount');
@@ -75,22 +65,40 @@ const plushMessages = [
   '{count} plushies. That\'s not a collection anymore, that\'s a fucking infestation.'
 ];
 
-app.get('/plush', function (req, res) {
-  var count = getCount();
-  count++;
-  setCount(count);
+app.get('/plush', async function (req, res) {
+  try {
+    let count = await redis.get('plushCount');
 
-  var message =
-    plushMessages[Math.floor(Math.random() * plushMessages.length)]
-      .replace('{count}', count);
+    if (count === null) {
+      count = 420;
+    } else {
+      count = Number(count);
+    }
 
-  res.send(message);
+    count++;
+
+    await redis.set('plushCount', count);
+
+    const message =
+      plushMessages[Math.floor(Math.random() * plushMessages.length)]
+        .replace('{count}', count);
+
+    res.send(message);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Something went wrong.');
+  }
 });
 
-app.get('/plushcount', function (req, res) {
-  var count = getCount();
+app.get('/plushcount', async function (req, res) {
+  try {
+    let count = await redis.get('plushCount');
 
-  var countMessages = [
+    if (count === null) {
+      count = 87;
+    }
+
+    var countMessages = [
     'This fucking streamer has ' + count + ' goddamn plushies.',
     'Why the fuck do you want to know? She has ' + count + ', you nosy bastard.',
     count + ' plushies. That\'s an absurd amount of stuffed shit.',
@@ -113,10 +121,14 @@ app.get('/plushcount', function (req, res) {
     'Oh for fuck\'s sake, it\'s ' + count + ' plushies.'
   ];
 
-  var message =
-    countMessages[Math.floor(Math.random() * countMessages.length)];
+const message =
+      countMessages[Math.floor(Math.random() * countMessages.length)];
 
-  res.send(message);
+    res.send(message);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Something went wrong.');
+  }
 });
 
 app.listen(PORT, function () {
